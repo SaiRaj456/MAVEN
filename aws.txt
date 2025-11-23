@@ -1,0 +1,43 @@
+ssh -i "new.pem" ubuntu@ec2-44-222-177-164.compute-1.amazonaws.com
+
+sudo apt update
+
+sudo apt-get install docker.io
+
+
+sudo apt install git
+
+Sudo apt install nano
+
+git clone  https://github.com/bharadwaj360/Lms.git
+
+cd Lms
+
+sudo docker login
+
+sudo docker build -t lms-app .
+
+sudo docker run -d --name -p 8980:8080 lms-app
+
+
+nginx
+
+curl.exe -LO "https://storage.googleapis.com/kubernetes-release/release/v1.30.0/bin/windows/amd64/kubectl.exe"
+minikube start
+
+kubectl create deployment nginx --image=nginx
+
+kubectl get deployments
+
+kubectl get pods
+
+kubectl expose deployment nginx --port=80 --type=NodePort
+
+kubectl get svc
+
+minikube service nginx
+
+minikube service nginx --url
+
+
+
