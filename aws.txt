@@ -18,6 +18,7 @@ sudo docker login
 sudo docker build -t lms-app .
 
 sudo docker run -d --name -p 8980:8080 lms-app
+sudo docker run -d --name lms-container -p 8980:8080 lms-app
 
 
 nginx
@@ -38,6 +39,7 @@ kubectl get svc
 minikube service nginx
 
 minikube service nginx --url
+
 
 
 
