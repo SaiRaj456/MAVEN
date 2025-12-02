@@ -65,9 +65,61 @@ services:
       MYSQL_DATABASE: mydb
 
 
-git config --global user.name "your name"
 
+version: "3.9"
+services:
+  web:
+    image: nginx:latest
+    ports:
+    - "8080:80"
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: demo
+      POSTGRES_PASSWORD: demo
+      POSTGRES_DB: demo_db
+
+
+
+git config --global --unset-all User.name/email    
+git config --global user.name "your name"
 git config --global user.email "your email"
+
+
+
+scripted
+pipeline {
+    agent any
+    tools{
+        maven 'MAVEN_HOME'
+    }
+    stages {
+        stage('git repo & clean') {
+            steps {
+                //bat "rmdir  /s /q mavenjava"
+                bat "git clone provide your github link"
+                bat "mvn clean -f mavenjava"
+            }
+        }
+        stage('install') {
+            steps {
+                bat "mvn install -f mavenjava" #project name#
+            }
+        }
+        stage('test') {
+            steps {
+                bat "mvn test -f mavenjava"
+            }
+        }
+        stage('package') {
+            steps {
+                bat "mvn package -f mavenjava"
+            }
+        }
+    }
+}
+
+
 
 
 
@@ -96,5 +148,6 @@ docker ps
 docker-compose up -d
 
 docker-compose down
+
 
 
