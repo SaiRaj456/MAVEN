@@ -40,6 +40,11 @@ minikube service nginx
 
 minikube service nginx --url
 
+nagios
+
+docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest
+
+docker pull jasonrivers/nagios:latest
 
 
 
